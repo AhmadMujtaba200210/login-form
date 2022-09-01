@@ -3,6 +3,8 @@ package com.springsecure.form.controller;
 import com.springsecure.form.model.Employee;
 import com.springsecure.form.model.Role;
 import com.springsecure.form.services.EmployeeServices;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
@@ -14,7 +16,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping
+
 public class EmployeeController {
+
     @Autowired
     private EmployeeServices employeeServices;
 
@@ -30,7 +34,6 @@ public class EmployeeController {
 
     @PostMapping("/postEmployee")
     public ResponseEntity<HttpRequest> postByEmail(@RequestBody Employee emp){
-
         if(!employeeServices.validateEmail(emp.getEmail())){
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
@@ -70,19 +73,19 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(tempRole);
     }
 
-    @DeleteMapping("/DeleteRole")
+    @DeleteMapping("/deleteRole/{name}")
     public ResponseEntity<String> deleteRole(@PathVariable String name) throws RoleNotFoundException {
         String msg=this.employeeServices.deleteRole(name);
         return ResponseEntity.status(HttpStatus.CREATED).body(msg);
     }
 
-    @PutMapping("/updateRole")
+    @PutMapping("/updateRole/{name}")
     public ResponseEntity<Role> getRoleByName(@PathVariable String name,@RequestBody Role role) throws RoleNotFoundException {
         Role tempRole=this.employeeServices.updateRole(name,role);
         return ResponseEntity.status(HttpStatus.CREATED).body(tempRole);
     }
-    @PutMapping("/addRoleToEmployee")
-    public ResponseEntity<Employee> addRoleToEmployee(@PathVariable String email,@PathVariable String roleName) throws RoleNotFoundException {
+    @PutMapping("/addRoleToEmployee/{email}/{roleName}")
+    public ResponseEntity<Employee> addRoleToEmployee(@PathVariable String email,@PathVariable String roleName) throws Exception {
         Employee emp=this.employeeServices.assignRole(email,roleName);
         return ResponseEntity.status(HttpStatus.CREATED).body(emp);
     }

@@ -10,14 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Data
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class Role {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO.SEQUENCE)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     int id;
     String name;
     String Description;

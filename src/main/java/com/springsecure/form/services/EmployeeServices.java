@@ -15,8 +15,8 @@ public interface EmployeeServices {
     public void updateEmployee(String email,Employee emp) throws Exception;
     public Role addRole(Role role);
     public String deleteRole(String name) throws RoleNotFoundException;// @PathVariable
-    public Employee assignRole(String email,String role);// @PathVariable, @PathVariable
+    public Employee assignRole(String email,String role) throws Exception;// @PathVariable, @PathVariable
     public Role updateRole(String role,Role roleClass) throws RoleNotFoundException; // @PathVariable, @ResponseBody
     public List<Role> getAllRole();
-    public Role getRoleByName(String role); // @PathVariable
+    public Role getRoleByName(String name); // @PathVariable
 }
