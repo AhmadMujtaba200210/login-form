@@ -1,5 +1,9 @@
 # login-form
-## this is an old way of creating REST API in Spring boot as now, Spring boot shifted to component based configuration so check my new repository jwt-2023,
+## Upgrading spring boot 2.7.3 to Spring boot 3.0.4
+check new repository for authentication and authorisation with JSON Web Token, 
+
+
+Repo: jwt-2023,
 many more to come, 
 
 #Thanks!
